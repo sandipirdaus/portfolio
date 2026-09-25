@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="solGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="#151030" stroke="url(#solGrad)" stroke-width="4"/>
+  <rect x="28" y="28" width="44" height="12" rx="3" stroke="url(#solGrad)" stroke-width="3"/>
+  <circle cx="34" cy="34" r="2" fill="#f59e0b"/>
+  <rect x="28" y="44" width="44" height="12" rx="3" stroke="url(#solGrad)" stroke-width="3"/>
+  <circle cx="34" cy="50" r="2" fill="#ef4444"/>
+  <rect x="28" y="60" width="44" height="12" rx="3" stroke="url(#solGrad)" stroke-width="3"/>
+  <circle cx="34" cy="66" r="2" fill="#f59e0b"/>
+</svg>

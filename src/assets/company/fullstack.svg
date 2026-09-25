@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#915EFF"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="#151030" stroke="url(#codeGrad)" stroke-width="4"/>
+  <path d="M34 36L20 50L34 64" stroke="url(#codeGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M66 36L80 50L66 64" stroke="url(#codeGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M54 32L46 68" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
+</svg>

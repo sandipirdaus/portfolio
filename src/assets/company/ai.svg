@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="aiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="#151030" stroke="url(#aiGrad)" stroke-width="4"/>
+  <rect x="34" y="34" width="32" height="32" rx="6" stroke="url(#aiGrad)" stroke-width="4"/>
+  <circle cx="50" cy="50" r="6" fill="url(#aiGrad)"/>
+  <path d="M50 24L50 34" stroke="url(#aiGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M50 66L50 76" stroke="url(#aiGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M24 50L34 50" stroke="url(#aiGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M66 50L76 50" stroke="url(#aiGrad)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="50" cy="22" r="3" fill="#06b6d4"/>
+  <circle cx="50" cy="78" r="3" fill="#10b981"/>
+  <circle cx="22" cy="50" r="3" fill="#06b6d4"/>
+  <circle cx="78" cy="50" r="3" fill="#10b981"/>
+</svg>

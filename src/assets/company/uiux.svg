@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <linearGradient id="creativeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="46" fill="#151030" stroke="url(#creativeGrad)" stroke-width="4"/>
+  <rect x="26" y="26" width="48" height="34" rx="5" stroke="url(#creativeGrad)" stroke-width="4"/>
+  <circle cx="34" cy="34" r="2.5" fill="#ec4899"/>
+  <circle cx="42" cy="34" r="2.5" fill="#8b5cf6"/>
+  <circle cx="50" cy="34" r="2.5" fill="#38bdf8"/>
+  <path d="M40 70L60 70" stroke="url(#creativeGrad)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 60L50 70" stroke="url(#creativeGrad)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M52 44L62 38L64 48Z" fill="url(#creativeGrad)"/>
+</svg>
