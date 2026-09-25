@@ -29,6 +29,7 @@ const PortfolioHome = () => (
       <Contact />
       <StarsCanvas />
     </div>
+    <SideScrollButton />
     <footer className="py-6 text-center text-xs text-secondary border-t border-white/5 relative z-10 flex items-center justify-center px-4">
       <span>© 2022 Sandi Pirdaus. All rights reserved.</span>
     </footer>

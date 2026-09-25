@@ -7,8 +7,17 @@ import { useLanguage } from "../context";
 const Hero = () => {
   const { t } = useLanguage();
 
+  const scrollToAbout = () => {
+    const aboutElem = document.getElementById("about");
+    if (aboutElem) {
+      aboutElem.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollBy({ top: window.innerHeight * 0.9, behavior: "smooth" });
+    }
+  };
+
   return (
-    <section className={`relative w-full h-screen mx-auto overflow-hidden`}>
+    <section className={`relative w-full min-h-[100dvh] h-[100dvh] mx-auto overflow-hidden`}>
       <div
         className={`absolute inset-0 top-[75px] xs:top-[85px] sm:top-[120px] max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-3.5 sm:gap-5 z-10 pointer-events-none`}
       >
@@ -29,26 +38,31 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Mobile Edge Scroll Zones: Garansi sentuhan di tepi kiri & kanan selalu mengalirkan scroll halaman */}
-      <div 
-        aria-hidden="true" 
-        className="block sm:hidden absolute left-0 top-0 w-8 h-full z-20 pointer-events-auto touch-pan-y" 
-      />
-      <div 
-        aria-hidden="true" 
-        className="block sm:hidden absolute right-0 top-0 w-8 h-full z-20 pointer-events-auto touch-pan-y" 
-      />
+      {/* Mobile Edge Quick-Scroll Button: Tombol di pinggir kanan layar untuk langsung meluncur ke bawah */}
+      <div className="block sm:hidden absolute right-0 top-1/2 -translate-y-1/2 z-30 pointer-events-auto">
+        <button
+          onClick={scrollToAbout}
+          aria-label="Scroll ke Bawah"
+          className="bg-[#915EFF]/90 active:bg-[#7038e8] text-white px-2.5 py-4 rounded-l-2xl shadow-[0_4px_20px_rgba(145,94,255,0.5)] border-y border-l border-white/20 backdrop-blur-md flex flex-col items-center gap-1.5 transition-transform active:scale-95 select-none"
+        >
+          <span className="text-xs font-bold animate-bounce">↓</span>
+          <span className="text-[10px] font-bold tracking-wider [writing-mode:vertical-rl] rotate-180 uppercase">
+            Scroll
+          </span>
+          <span className="text-xs font-bold animate-bounce">↓</span>
+        </button>
+      </div>
 
       <ComputersCanvas />
 
-      {/* Scroll Down Indicator with direct tap to scroll */}
+      {/* Bottom Scroll Down Mouse Pill Indicator */}
       <div className="absolute xs:bottom-8 bottom-6 w-full flex flex-col justify-center items-center z-10 pointer-events-none">
         <a 
           href="#about" 
           className="pointer-events-auto flex flex-col items-center gap-1.5 group"
           aria-label="Scroll to About section"
         >
-          <div className="w-[30px] h-[54px] sm:w-[35px] sm:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2 group-hover:border-[#915EFF] transition-colors">
+          <div className="w-[30px] h-[54px] sm:w-[35px] sm:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2 group-hover:border-[#915EFF] transition-colors shadow-md">
             <motion.div
               animate={{
                 y: [0, 20, 0]
