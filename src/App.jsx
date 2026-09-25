@@ -10,7 +10,8 @@ import {
   Navbar,
   Tech,
   Works,
-  StarsCanvas
+  StarsCanvas,
+  SideScrollButton
 } from "./components";
 import { AdminDashboard } from "./components/admin";
 
