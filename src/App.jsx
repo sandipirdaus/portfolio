@@ -29,15 +29,8 @@ const PortfolioHome = () => (
       <Contact />
       <StarsCanvas />
     </div>
-    <footer className="py-6 text-center text-xs text-secondary border-t border-white/5 relative z-10 flex flex-wrap items-center justify-center gap-3 px-4">
-      <span>© {new Date().getFullYear()} Sandi Pirdaus. All rights reserved.</span>
-      <span className="hidden sm:inline">•</span>
-      <a
-        href="/admin"
-        className="hover:text-[#915EFF] transition-colors font-medium opacity-70 hover:opacity-100"
-      >
-        🔐 Portal Admin
-      </a>
+    <footer className="py-6 text-center text-xs text-secondary border-t border-white/5 relative z-10 flex items-center justify-center px-4">
+      <span>© 2022 Sandi Pirdaus. All rights reserved.</span>
     </footer>
   </div>
 );

@@ -57,18 +57,25 @@ const ComputersCanvas = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="w-full h-full">
+    <div
+      ref={containerRef}
+      className={`w-full h-full ${isMobile ? "pointer-events-none" : "pointer-events-auto"}`}
+    >
       {isInView && (
         <Canvas
-          frameloop="demand"
+          frameloop={isMobile ? "always" : "demand"}
           shadows
           dpr={[1, 1.5]}
           camera={{ position: [20, 3, 5], fov: 25 }}
           gl={{ preserveDrawingBuffer: false, powerPreference: "low-power" }}
+          style={{ touchAction: "pan-y" }}
         >
           <Suspense fallback={<CanvasLoader />}>
             <OrbitControls
               enableZoom={false}
+              enableRotate={!isMobile}
+              autoRotate={isMobile}
+              autoRotateSpeed={0.8}
               maxPolarAngle={Math.PI / 2}
               minPolarAngle={Math.PI / 2}
             />

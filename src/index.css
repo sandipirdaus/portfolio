@@ -120,6 +120,19 @@ html.light form button[type="submit"] {
 
 canvas {
   transition: none !important;
+  touch-action: pan-y !important;
+}
+
+html.light .bg-black-100 {
+  background-color: var(--bg-card-sub2) !important;
+}
+
+html.light .bg-black-200 {
+  background-color: var(--bg-card-sub) !important;
+}
+
+html.light .text-white-100 {
+  color: #1e293b !important;
 }
 
 

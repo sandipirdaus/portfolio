@@ -29,11 +29,26 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Mobile Edge Scroll Zones: Garansi sentuhan di tepi kiri & kanan selalu mengalirkan scroll halaman */}
+      <div 
+        aria-hidden="true" 
+        className="block sm:hidden absolute left-0 top-0 w-8 h-full z-20 pointer-events-auto touch-pan-y" 
+      />
+      <div 
+        aria-hidden="true" 
+        className="block sm:hidden absolute right-0 top-0 w-8 h-full z-20 pointer-events-auto touch-pan-y" 
+      />
+
       <ComputersCanvas />
 
-      <div className="absolute xs:bottom-8 bottom-6 w-full flex justify-center items-center z-10">
-        <a href="#about" className="pointer-events-auto">
-          <div className="w-[30px] h-[54px] sm:w-[35px] sm:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2">
+      {/* Scroll Down Indicator with direct tap to scroll */}
+      <div className="absolute xs:bottom-8 bottom-6 w-full flex flex-col justify-center items-center z-10 pointer-events-none">
+        <a 
+          href="#about" 
+          className="pointer-events-auto flex flex-col items-center gap-1.5 group"
+          aria-label="Scroll to About section"
+        >
+          <div className="w-[30px] h-[54px] sm:w-[35px] sm:h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-1.5 sm:p-2 group-hover:border-[#915EFF] transition-colors">
             <motion.div
               animate={{
                 y: [0, 20, 0]
@@ -43,9 +58,12 @@ const Hero = () => {
                 repeat: Infinity,
                 repeatType: "loop"
               }}
-              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-secondary mb-1"
+              className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-secondary group-hover:bg-[#915EFF] transition-colors mb-1"
             />
           </div>
+          <span className="text-[10px] text-secondary group-hover:text-white uppercase tracking-widest font-semibold block sm:hidden">
+            Scroll ↓
+          </span>
         </a>
       </div>
     </section>

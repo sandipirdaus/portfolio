@@ -8,16 +8,41 @@ import { useLanguage } from "../context";
 import { fetchApprovedTestimonials, LOCAL_TESTIMONIALS_KEY } from "../lib/supabase";
 import TestimonialModal from "./TestimonialModal";
 
+const getInitials = (name = "") => {
+  if (!name) return "KL";
+  const parts = name.trim().split(/\s+/).filter(Boolean);
+  if (parts.length >= 2) {
+    return (parts[0][0] + parts[1][0]).toUpperCase();
+  }
+  return name.slice(0, 2).toUpperCase() || "KL";
+};
+
+const getAvatarColor = (name = "") => {
+  const colors = [
+    "from-purple-600 to-indigo-600 text-white shadow-purple-500/20",
+    "from-blue-600 to-cyan-500 text-white shadow-blue-500/20",
+    "from-emerald-600 to-teal-500 text-white shadow-emerald-500/20",
+    "from-violet-600 to-fuchsia-600 text-white shadow-violet-500/20",
+    "from-pink-600 to-rose-500 text-white shadow-pink-500/20",
+    "from-amber-500 to-orange-600 text-white shadow-amber-500/20"
+  ];
+  let hash = 0;
+  for (let i = 0; i < name.length; i++) {
+    hash = name.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const index = Math.abs(hash) % colors.length;
+  return colors[index];
+};
+
 const FeedbackCard = ({
   testimonial,
   name,
   designation,
   company,
-  image,
   rating = 5,
   isDynamic
 }) => (
-  <div className="bg-black-200/95 p-4 sm:p-5 rounded-2xl border border-white/10 shadow-card flex flex-col justify-between h-[210px] sm:h-[220px] transition-all duration-300 hover:border-[#915EFF]/50 hover:shadow-[0_8px_24px_-4px_rgba(145,94,255,0.25)] relative group">
+  <div className="bg-black-200/95 dark:bg-black-200/95 p-4 sm:p-5 rounded-2xl border border-white/10 shadow-card flex flex-col justify-between h-[210px] sm:h-[220px] transition-all duration-300 hover:border-[#915EFF]/50 hover:shadow-[0_8px_24px_-4px_rgba(145,94,255,0.25)] relative group">
     <div>
       {/* Top row: Quote & Rating */}
       <div className="flex items-center justify-between">
@@ -29,15 +54,15 @@ const FeedbackCard = ({
         </div>
       </div>
 
-      {/* Testimonial text: compact & uniform clamp */}
+      {/* Testimonial text: compact & uniform clamp, visible in both dark & light modes */}
       <div className="mt-2.5">
-        <p className="text-white/90 text-xs sm:text-[13px] leading-relaxed line-clamp-3 italic min-h-[52px]">
+        <p className="text-white-100 text-xs sm:text-[13px] leading-relaxed line-clamp-3 italic min-h-[52px]">
           "{testimonial}"
         </p>
       </div>
     </div>
 
-    {/* Footer: User profile */}
+    {/* Footer: User profile with Name Initials */}
     <div className="flex items-center justify-between gap-3 pt-3 border-t border-white/5">
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5">
@@ -55,14 +80,14 @@ const FeedbackCard = ({
         </p>
       </div>
 
-      <img
-        src={image}
-        alt={`feedback_by-${name}`}
-        className="w-8 h-8 sm:w-9 sm:h-9 rounded-full object-cover border border-white/15 shrink-0"
-        onError={(e) => {
-          e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=915EFF&color=fff`;
-        }}
-      />
+      {/* Inisial Nama Avatar */}
+      <div
+        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-tr ${getAvatarColor(
+          name
+        )} flex items-center justify-center font-bold text-xs sm:text-sm tracking-wider shadow-md shrink-0 border border-white/20 select-none !text-white`}
+      >
+        {getInitials(name)}
+      </div>
     </div>
   </div>
 );
@@ -72,7 +97,14 @@ const Feedbacks = () => {
   const [testimonials, setTestimonials] = useState(t.feedbacks.list || []);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(4);
+  const [visibleCount, setVisibleCount] = useState(() => {
+    if (typeof window !== "undefined") {
+      if (window.innerWidth >= 1024) return 4;
+      if (window.innerWidth >= 640) return 2;
+      return 1;
+    }
+    return 1;
+  });
 
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
@@ -273,7 +305,7 @@ const Feedbacks = () => {
           {testimonials.map((item, index) => (
             <div
               key={item.id || `${item.name}-${index}`}
-              className="px-2 shrink-0 select-none"
+              className="w-full sm:w-1/2 lg:w-1/4 px-2 shrink-0 select-none"
               style={{ width: `${100 / visibleCount}%` }}
             >
               <FeedbackCard {...item} />
